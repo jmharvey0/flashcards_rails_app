@@ -3,6 +3,7 @@
 <h3>Description</h3>
 <p><%= @deck.description %></p>
 
-<a href="/decks/<%= @deck.id %>/rounds/new">
-  <button>Start New Round</button>
-</a>
+
+<%= form_for([@deck, @deck.rounds.build]) do |form| %>
+  <%= form.submit  %>
+<% end %>
