@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  has_many :rounds
+  has_many :rounds, dependent: :destroy
   has_secure_password
 
-  vaildates :password, length: {minimum: 6}
+  validates :username, presence: true
+  validates :password, length: {minimum: 6}
 end
