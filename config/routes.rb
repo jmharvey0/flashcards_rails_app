@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
-  root "decks#index"
+  root to: "decks#index"
+
+  get '/decks/:id', to: 'decks#show', as: "deck"
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
