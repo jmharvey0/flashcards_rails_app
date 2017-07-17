@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require_relative '../app/helpers/parser_helper'
+
+Dir["db/seeds_data/*.csv"].each do |file|
+  ParserHelper.parse(file)
+end

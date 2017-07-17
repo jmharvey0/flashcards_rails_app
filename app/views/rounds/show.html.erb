@@ -1,0 +1,23 @@
+<h2><%= @round.deck.name %></h2>
+
+<% if !session[:first_complete] || !session[:wrong_cards].empty? %>
+  <% if @response %>
+    <p><%= @response %></p>
+    <p>The correct answer was: <%= @answer %></p>
+  <% end %>
+
+  <%= @round.deck.cards[@current_card].question %><br><br>
+
+  <form action="/decks/<%= @deck.id %>/rounds/<%= @round.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <input type="text" name="user_answer" autofocus="autofocus">
+    <input type="submit" value="Submit Guess">
+  </form>
+
+  <p>Total Guesses: <%= @total_guesses %></p>
+  <p>Current Card: <%= @current_card %></p>
+<% else %>
+  <h1>COOL AWESOME YEAH YOU WIN GOOD JOB BUDDY!</h1>
+  <p>You answered <%= @round.correct_first_try %> out of <%= @round.cards.count %> correctly on the first try.</p>
+  <p>You submitted <%= @round.total_guesses %> total guesses before each card was answered correctly</p>
+<% end %>

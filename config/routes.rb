@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resources :users
   root to: "decks#index"
 
-  get '/decks/:id', to: 'decks#show', as: "deck"
+  # get '/decks/:id', to: 'decks#show', as: "deck"
+
+
+  resources :decks, only: [:show] do
+    resources :rounds
+  end
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
