@@ -1,0 +1,29 @@
+<h2>Log In</h2>
+
+<%= form_for(:sessions, url: login_path) do |form| %>
+  <% if @errors %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@errors.count, "error") %></h2>
+
+      <ul>
+      <% @errors.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :username %>
+    <%= form.text_field :username, id: :user_username %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password, id: :user_password %>
+  </div>
+  <div class="submit">
+    <%= form.submit :register %>
+  </div>
+<% end %>
+

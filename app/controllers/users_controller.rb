@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
   def create
+    # username.downcase?
     @user = User.new(params[:user].permit(:username, :password))
     if @user.save
       log_in @user
