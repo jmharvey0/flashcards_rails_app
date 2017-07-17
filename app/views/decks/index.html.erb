@@ -1,5 +1,5 @@
 <h2>Decks</h2>
 
 <% @decks.each do |deck| %>
-  <h3><%= link_to deck.name, "/deck/#{deck.id}/rounds/new" %></h3>
+  <h3><%= link_to deck.name, deck_path(deck) %></h3>
 <% end %>
