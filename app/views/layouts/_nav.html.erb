@@ -1,0 +1,12 @@
+<nav>
+  <ul>
+     <li><%= link_to "Home".html_safe, root_url %></li>
+   <% if logged_in? %>
+     <li><%= link_to "My Rounds".html_safe, users_path  %></li>
+     <li><%= link_to "Log Out".html_safe, logout_path, method: "delete" %></li>
+   <% else %>
+     <li><%= link_to "Register".html_safe, new_user_path  %></li>
+     <li><%= link_to "Log In".html_safe, login_path %></li>
+   <% end %>
+  </ul>
+</nav>
